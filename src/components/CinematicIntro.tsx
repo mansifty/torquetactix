@@ -72,7 +72,7 @@ const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
 
           {/* Logo reveal */}
           <AnimatePresence>
-            {(phase === 'logo' || phase === 'done') && (
+            {phase === 'logo' && (
               <motion.div
                 className="absolute inset-0 flex flex-col items-center justify-center z-20"
                 initial={{ opacity: 0 }}
