@@ -6,26 +6,26 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Torque Tactix" className="h-8" />
+            <img alt="Torque Tactix" className="h-8" src="/lovable-uploads/f835811d-54da-4c15-aa5b-88dc659931d4.png" />
           </div>
           <p className="font-body text-xs text-muted-foreground tracking-wider text-center">
             © {new Date().getFullYear()} TORQUE TACTIX · PRECISION · POWER · PRESTIGE
           </p>
           <div className="flex gap-6">
-            {['Privacy', 'Terms', 'FAQ'].map(link => (
-              <a
-                key={link}
-                href="#"
-                className="font-body text-xs text-muted-foreground hover:text-primary transition-colors tracking-wider"
-              >
+            {['Privacy', 'Terms', 'FAQ'].map((link) =>
+            <a
+              key={link}
+              href="#"
+              className="font-body text-xs text-muted-foreground hover:text-primary transition-colors tracking-wider">
+              
                 {link}
               </a>
-            ))}
+            )}
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default Footer;

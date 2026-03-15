@@ -24,7 +24,7 @@ const Navbar = () => {
       
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <a href="#" className="flex items-center gap-3 text-inherit bg-inherit text-2xl rounded-none">
-          <img alt="Torque Tactix" className="h-10 object-cover" src="/lovable-uploads/08fe8470-8749-4b0a-93e7-011f6ba7fe35.png" />
+          <img alt="Torque Tactix" className="h-10 object-cover" src="/lovable-uploads/34222c89-d4d9-409e-9b1f-5f8959f58b83.png" />
         </a>
 
         {/* Desktop nav */}
