@@ -84,12 +84,12 @@ const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
               className="flex flex-col items-center">
               
                   <motion.img
-                src={logo}
+
                 alt="Torque Tactix"
                 className="w-48 md:w-64 mb-6"
                 initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ delay: 0.2, duration: 0.8 }} />
+                transition={{ delay: 0.2, duration: 0.8 }} src="/lovable-uploads/bde3a4be-d518-4616-934f-8bb1aef58be3.png" />
               
                 </motion.div>
             }
