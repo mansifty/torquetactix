@@ -25,18 +25,18 @@ const Index = () => {
           <div className="pt-16">
             {/* Hero tagline */}
             <section className="py-20 px-4 text-center">
-              <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
-                <span className="text-gradient-primary">IMPORTING EXCELLENCE.</span>
+              <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                <span className="gold-shimmer">Importing Excellence.</span>
                 <br />
-                <span className="text-foreground">CUSTOMIZING PRESTIGE.</span>
+                <span className="text-foreground">Customizing Prestige.</span>
               </h1>
-              <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto mb-8">
+              <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto mb-8 font-body">
                 Torque Tactix is the definitive digital showroom for the Bangladeshi elite.
                 Premium JDM imports & European luxury, delivered with transparency.
               </p>
               <a
                 href="#showroom"
-                className="inline-block px-8 py-3.5 rounded-xl bg-primary/10 border border-primary/40 font-mono text-sm tracking-[0.2em] text-primary hover:bg-primary/20 transition-all animate-pulse-glow"
+                className="glass-button-primary inline-block swoosh-click font-body text-sm tracking-[0.15em]"
               >
                 EXPLORE SHOWROOM
               </a>

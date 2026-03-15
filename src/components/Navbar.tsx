@@ -16,7 +16,8 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-40 glass-panel-strong border-b border-border/30"
+      className="fixed top-0 left-0 right-0 z-40 glass-panel-strong"
+      style={{ borderRadius: 0 }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -32,17 +33,17 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="font-mono text-xs tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
+              className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300 swoosh-click"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="tel:+8801700000000"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary font-mono text-xs tracking-wider hover:bg-primary/20 transition-all"
+            href="tel:+8801608095085"
+            className="glass-button-primary flex items-center gap-2 py-2 px-4 text-xs tracking-wider swoosh-click"
           >
             <Phone className="w-3 h-3" />
-            CALL NOW
+            +880 1608-095085
           </a>
         </div>
 
@@ -58,7 +59,8 @@ const Navbar = () => {
       {/* Mobile menu */}
       {open && (
         <motion.div
-          className="md:hidden glass-panel-strong border-t border-border/30 p-6 space-y-4"
+          className="md:hidden p-6 space-y-4 border-t"
+          style={{ borderColor: 'hsl(43 74% 49% / 0.1)', background: 'hsl(0 0% 5% / 0.95)' }}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -66,12 +68,19 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="block font-mono text-sm tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors"
+              className="block font-body text-sm tracking-[0.15em] uppercase text-muted-foreground hover:text-primary transition-colors swoosh-click"
               onClick={() => setOpen(false)}
             >
               {link.label}
             </a>
           ))}
+          <a
+            href="tel:+8801608095085"
+            className="glass-button-primary flex items-center gap-2 py-2 px-4 text-xs tracking-wider w-fit swoosh-click"
+          >
+            <Phone className="w-3 h-3" />
+            +880 1608-095085
+          </a>
         </motion.div>
       )}
     </motion.nav>

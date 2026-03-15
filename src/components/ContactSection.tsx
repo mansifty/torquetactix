@@ -22,30 +22,26 @@ const ContactSection = () => {
             {
               icon: Phone,
               title: 'Call Us',
-              desc: '+880 1700-000000',
-              href: 'tel:+8801700000000',
-              color: 'primary',
+              desc: '+880 1608-095085',
+              href: 'tel:+8801608095085',
             },
             {
               icon: MessageCircle,
               title: 'WhatsApp',
               desc: 'Chat with us instantly',
-              href: 'https://wa.me/8801700000000',
-              color: 'primary',
+              href: 'https://wa.me/8801608095085',
             },
             {
               icon: Facebook,
               title: 'Facebook',
               desc: 'Follow Torque Tactix',
               href: 'https://www.facebook.com/profile.php?id=61579162455911',
-              color: 'accent',
             },
             {
               icon: MapPin,
               title: 'Showroom',
               desc: 'Dhaka, Bangladesh',
               href: 'https://www.google.com/maps?q=23.820555,90.390440',
-              color: 'accent',
             },
           ].map((item, i) => (
             <motion.a
@@ -53,19 +49,15 @@ const ContactSection = () => {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-panel p-6 flex items-center gap-5 group hover:glow-box-primary transition-all duration-500"
+              className="glass-panel p-6 flex items-center gap-5 group hover:glow-box-primary transition-all duration-500 swoosh-click"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ x: 8 }}
             >
-              <div className={`p-3 rounded-xl ${
-                item.color === 'primary' ? 'bg-primary/10' : 'bg-accent/10'
-              }`}>
-                <item.icon className={`w-6 h-6 ${
-                  item.color === 'primary' ? 'text-primary' : 'text-accent'
-                }`} />
+              <div className="p-3 rounded-xl" style={{ background: 'hsl(43 74% 49% / 0.1)' }}>
+                <item.icon className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-display font-bold">{item.title}</h3>

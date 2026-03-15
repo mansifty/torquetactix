@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -7,51 +8,53 @@
 
 @layer base {
   :root {
-    --background: 240 10% 2%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 3%;
+    --foreground: 40 20% 95%;
 
-    --card: 240 8% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 7%;
+    --card-foreground: 40 20% 95%;
 
-    --popover: 240 8% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 40 20% 95%;
 
-    --primary: 142 71% 45%;
-    --primary-foreground: 240 10% 2%;
+    --primary: 43 74% 49%;
+    --primary-foreground: 0 0% 3%;
 
-    --secondary: 240 5% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 40 20% 90%;
 
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 5% 55%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 40 5% 50%;
 
-    --accent: 270 50% 40%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 30 60% 42%;
+    --accent-foreground: 40 20% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5% 18%;
-    --input: 240 5% 18%;
-    --ring: 142 71% 45%;
+    --border: 40 10% 16%;
+    --input: 40 10% 16%;
+    --ring: 43 74% 49%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 240 8% 4%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 142 71% 45%;
-    --sidebar-primary-foreground: 240 10% 2%;
-    --sidebar-accent: 240 5% 12%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 240 5% 15%;
-    --sidebar-ring: 142 71% 45%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 43 74% 49%;
+    --sidebar-primary-foreground: 0 0% 3%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 40 10% 14%;
+    --sidebar-ring: 43 74% 49%;
 
     /* Custom design tokens */
-    --glass-bg: 0 0% 100% / 0.05;
-    --glass-border: 0 0% 100% / 0.1;
-    --glow-primary: 142 71% 45%;
-    --glow-accent: 270 50% 40%;
-    --davit-grey: 220 5% 45%;
+    --glass-bg: 40 20% 95% / 0.04;
+    --glass-border: 43 74% 49% / 0.12;
+    --glow-primary: 43 74% 49%;
+    --glow-accent: 30 60% 42%;
+    --gold-light: 43 74% 62%;
+    --gold-dark: 35 60% 35%;
+    --champagne: 40 30% 75%;
   }
 }
 
@@ -62,10 +65,9 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    background-image: url('/carbon-fiber-texture.png');
-    background-size: 200px;
-    background-repeat: repeat;
-    background-blend-mode: overlay;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, hsl(43 74% 49% / 0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, hsl(30 60% 42% / 0.02) 0%, transparent 50%);
   }
 
   html {
@@ -75,13 +77,66 @@
 
 @layer components {
   .glass-panel {
-    @apply bg-card/60 backdrop-blur-2xl border border-border/50 rounded-2xl;
-    box-shadow: 0 0 40px hsl(var(--primary) / 0.05);
+    @apply rounded-2xl;
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.06), hsl(0 0% 100% / 0.02));
+    backdrop-filter: blur(40px) saturate(1.5);
+    border: 1px solid hsl(43 74% 49% / 0.12);
+    box-shadow:
+      0 8px 32px hsl(0 0% 0% / 0.4),
+      inset 0 1px 0 hsl(43 74% 49% / 0.08);
   }
 
   .glass-panel-strong {
-    @apply bg-card/80 backdrop-blur-3xl border border-border/60 rounded-2xl;
-    box-shadow: 0 0 60px hsl(var(--primary) / 0.08);
+    @apply rounded-2xl;
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.08), hsl(0 0% 100% / 0.03));
+    backdrop-filter: blur(60px) saturate(1.8);
+    border: 1px solid hsl(43 74% 49% / 0.15);
+    box-shadow:
+      0 12px 48px hsl(0 0% 0% / 0.5),
+      inset 0 1px 0 hsl(43 74% 49% / 0.1);
+  }
+
+  .glass-button {
+    @apply rounded-xl px-6 py-3 font-body text-sm font-medium tracking-wide transition-all duration-500 cursor-pointer;
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.08), hsl(0 0% 100% / 0.03));
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(43 74% 49% / 0.2);
+    color: hsl(var(--foreground));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(43 74% 49% / 0.15), transparent);
+    transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .glass-button:hover::before {
+    left: 100%;
+  }
+
+  .glass-button:hover {
+    border-color: hsl(43 74% 49% / 0.4);
+    box-shadow: 0 0 30px hsl(43 74% 49% / 0.15);
+    transform: translateY(-1px);
+  }
+
+  .glass-button-primary {
+    @apply glass-button;
+    background: linear-gradient(135deg, hsl(43 74% 49% / 0.2), hsl(30 60% 42% / 0.15));
+    border-color: hsl(43 74% 49% / 0.35);
+    color: hsl(var(--primary));
+  }
+
+  .glass-button-primary:hover {
+    background: linear-gradient(135deg, hsl(43 74% 49% / 0.3), hsl(30 60% 42% / 0.2));
+    box-shadow: 0 0 40px hsl(43 74% 49% / 0.2);
   }
 
   .glow-border {
@@ -94,15 +149,15 @@
   }
 
   .glow-text {
-    text-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 40px hsl(var(--primary) / 0.4);
   }
 
   .glow-box-primary {
-    box-shadow: 0 0 40px hsl(var(--primary) / 0.15), 0 0 80px hsl(var(--primary) / 0.05);
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.12), 0 0 80px hsl(var(--primary) / 0.04);
   }
 
   .glow-box-accent {
-    box-shadow: 0 0 40px hsl(var(--accent) / 0.15), 0 0 80px hsl(var(--accent) / 0.05);
+    box-shadow: 0 0 40px hsl(var(--accent) / 0.12), 0 0 80px hsl(var(--accent) / 0.04);
   }
 
   .car-card-shine {
@@ -120,7 +175,7 @@
     background: linear-gradient(
       to right,
       transparent,
-      hsl(0 0% 100% / 0.08),
+      hsl(43 74% 49% / 0.1),
       transparent
     );
     transform: skewX(-25deg);
@@ -133,24 +188,60 @@
 
   .text-gradient-primary {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(142 71% 60%));
+    background-image: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 74% 62%));
   }
 
   .text-gradient-accent {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--accent)), hsl(270 60% 60%));
+    background-image: linear-gradient(135deg, hsl(30 60% 42%), hsl(40 50% 55%));
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(43 74% 49%), hsl(35 60% 35%), hsl(43 74% 62%));
   }
 
   .section-divider {
     @apply w-full h-px;
-    background: linear-gradient(to right, transparent, hsl(var(--primary) / 0.3), transparent);
+    background: linear-gradient(to right, transparent, hsl(var(--primary) / 0.2), transparent);
+  }
+
+  /* Swoosh zoom animation on click */
+  .swoosh-click {
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .swoosh-click:active {
+    transform: scale(0.95);
+  }
+
+  /* Gold shimmer text */
+  .gold-shimmer {
+    background: linear-gradient(
+      110deg,
+      hsl(43 74% 49%) 0%,
+      hsl(43 74% 70%) 25%,
+      hsl(43 74% 49%) 50%,
+      hsl(35 60% 35%) 75%,
+      hsl(43 74% 49%) 100%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    letter-spacing: -0.04em;
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.02em;
   }
 
   .font-mono-tech {
@@ -158,6 +249,6 @@
   }
 
   .font-body {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'DM Sans', system-ui, sans-serif;
   }
 }

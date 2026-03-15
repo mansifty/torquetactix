@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, TrendingDown } from 'lucide-react';
 
 const EMICalculator = () => {
   const [carPrice, setCarPrice] = useState(4000000);
@@ -33,13 +32,13 @@ const EMICalculator = () => {
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-3">
             Easy Car Loan <span className="text-gradient-primary">Calculator</span>
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base">
+          <p className="text-muted-foreground text-sm md:text-base font-body">
             Plan your car purchase in seconds. See how much you pay now and your monthly EMI.
           </p>
         </motion.div>
 
         <motion.div
-          className="glass-panel-strong p-8 md:p-10 border-l-4 border-l-primary"
+          className="glass-panel-strong p-8 md:p-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -53,8 +52,8 @@ const EMICalculator = () => {
                 { label: 'Down Payment', value: downPayment, set: setDownPayment, max: carPrice },
               ].map(field => (
                 <div key={field.label}>
-                  <label className="block font-mono text-xs tracking-wider text-muted-foreground mb-2">
-                    {field.label.toUpperCase()}
+                  <label className="block font-body text-xs tracking-wide text-muted-foreground mb-2 uppercase">
+                    {field.label}
                   </label>
                   <input
                     type="range"
@@ -70,18 +69,18 @@ const EMICalculator = () => {
               ))}
 
               <div>
-                <label className="block font-mono text-xs tracking-wider text-muted-foreground mb-2">
-                  LOAN AMOUNT (AUTO)
+                <label className="block font-body text-xs tracking-wide text-muted-foreground mb-2 uppercase">
+                  Loan Amount (Auto)
                 </label>
-                <div className="p-3 rounded-lg bg-muted/30 border border-border/30 font-mono text-lg text-primary">
+                <div className="glass-panel p-3 font-mono text-lg text-primary">
                   {fmt(loanAmount)}
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-mono text-xs tracking-wider text-muted-foreground mb-2">
-                    INTEREST RATE (%)
+                  <label className="block font-body text-xs tracking-wide text-muted-foreground mb-2 uppercase">
+                    Interest Rate (%)
                   </label>
                   <input
                     type="number"
@@ -89,12 +88,16 @@ const EMICalculator = () => {
                     onChange={e => setRate(Number(e.target.value))}
                     min={1}
                     max={30}
-                    className="w-full p-3 rounded-lg bg-muted/20 border border-border/30 font-mono text-foreground focus:border-primary/50 transition-colors outline-none"
+                    className="w-full p-3 rounded-lg font-mono text-foreground focus:outline-none transition-colors"
+                    style={{
+                      background: 'hsl(0 0% 100% / 0.05)',
+                      border: '1px solid hsl(43 74% 49% / 0.1)',
+                    }}
                   />
                 </div>
                 <div>
-                  <label className="block font-mono text-xs tracking-wider text-muted-foreground mb-2">
-                    TENURE (YEARS)
+                  <label className="block font-body text-xs tracking-wide text-muted-foreground mb-2 uppercase">
+                    Tenure (Years)
                   </label>
                   <input
                     type="number"
@@ -102,7 +105,11 @@ const EMICalculator = () => {
                     onChange={e => setTenure(Number(e.target.value))}
                     min={1}
                     max={10}
-                    className="w-full p-3 rounded-lg bg-muted/20 border border-border/30 font-mono text-foreground focus:border-primary/50 transition-colors outline-none"
+                    className="w-full p-3 rounded-lg font-mono text-foreground focus:outline-none transition-colors"
+                    style={{
+                      background: 'hsl(0 0% 100% / 0.05)',
+                      border: '1px solid hsl(43 74% 49% / 0.1)',
+                    }}
                   />
                 </div>
               </div>
@@ -110,35 +117,33 @@ const EMICalculator = () => {
 
             {/* Results */}
             <div className="flex flex-col justify-center space-y-6">
-              <div className="p-6 rounded-2xl bg-primary/5 border border-primary/20">
-                <div className="text-center">
-                  <p className="font-mono text-xs text-muted-foreground tracking-wider mb-1">MONTHLY EMI</p>
-                  <p className="font-display text-4xl md:text-5xl font-bold text-primary glow-text">
-                    {fmt(emi)}
-                  </p>
-                </div>
+              <div className="glass-panel p-6 text-center" style={{ borderColor: 'hsl(43 74% 49% / 0.2)' }}>
+                <p className="font-body text-xs text-muted-foreground tracking-wide mb-1 uppercase">Monthly EMI</p>
+                <p className="font-display text-4xl md:text-5xl font-bold text-primary glow-text">
+                  {fmt(emi)}
+                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-muted/20 border border-border/30 text-center">
-                  <p className="font-mono text-xs text-muted-foreground mb-1">PAID NOW</p>
+                <div className="glass-panel p-4 text-center">
+                  <p className="font-body text-xs text-muted-foreground mb-1 uppercase">Paid Now</p>
                   <p className="font-mono text-lg font-bold text-foreground">{fmt(downPayment)}</p>
                 </div>
-                <div className="p-4 rounded-xl bg-muted/20 border border-border/30 text-center">
-                  <p className="font-mono text-xs text-muted-foreground mb-1">TOTAL INTEREST</p>
+                <div className="glass-panel p-4 text-center">
+                  <p className="font-body text-xs text-muted-foreground mb-1 uppercase">Total Interest</p>
                   <p className="font-mono text-lg font-bold text-foreground">{fmt(totalInterest)}</p>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-accent/5 border border-accent/20 text-center">
-                <p className="font-mono text-xs text-muted-foreground mb-1">TOTAL PAYMENT</p>
+              <div className="glass-panel p-4 text-center" style={{ borderColor: 'hsl(30 60% 42% / 0.15)' }}>
+                <p className="font-body text-xs text-muted-foreground mb-1 uppercase">Total Payment</p>
                 <p className="font-mono text-xl font-bold text-foreground">{fmt(totalPayment)}</p>
               </div>
 
-              <p className="text-center text-xs text-muted-foreground italic">
+              <p className="text-center text-xs text-muted-foreground italic font-body">
                 "Affordable monthly payments make owning your dream car easier."
               </p>
-              <p className="text-center text-xs text-primary/70 font-mono">
+              <p className="text-center text-xs text-primary/70 font-body">
                 ↓ Most customers finance with only 20–30% down payment
               </p>
             </div>
