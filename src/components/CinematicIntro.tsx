@@ -69,7 +69,7 @@ const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2, duration: 0.6 }}>
                 
-                    Founder of TORQUE TACTIX     
+                    Tech-Driven Dealership Experience.     
                   </motion.p>
                 </motion.div>
             }
