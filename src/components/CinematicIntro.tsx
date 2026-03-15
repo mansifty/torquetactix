@@ -8,29 +8,19 @@ interface CinematicIntroProps {
 }
 
 const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
-  const [phase, setPhase] = useState<'drive-in' | 'spin' | 'logo' | 'done'>('drive-in');
+  const [phase, setPhase] = useState<'drive-in' | 'spin' | 'logo'>('drive-in');
   const [car] = useState(() => introCarPool[Math.floor(Math.random() * introCarPool.length)]);
-
-  const advancePhase = useCallback(() => {
-    setPhase(prev => {
-      if (prev === 'drive-in') return 'spin';
-      if (prev === 'spin') return 'logo';
-      if (prev === 'logo') {
-        setTimeout(onComplete, 1200);
-        return 'done';
-      }
-      return prev;
-    });
-  }, [onComplete]);
+  const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
-    const timers = [
-      setTimeout(() => advancePhase(), 1800),
-      setTimeout(() => advancePhase(), 4800),
-      setTimeout(() => advancePhase(), 6500),
-    ];
-    return () => timers.forEach(clearTimeout);
-  }, [advancePhase]);
+    const t1 = setTimeout(() => setPhase('spin'), 1800);
+    const t2 = setTimeout(() => setPhase('logo'), 4800);
+    const t3 = setTimeout(() => {
+      setExiting(true);
+      setTimeout(onComplete, 800);
+    }, 6500);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, [onComplete]);
 
   return (
     <AnimatePresence>
