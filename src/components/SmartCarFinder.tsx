@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, Sparkles } from 'lucide-react';
+import { X, Send, Bot, Sparkles } from 'lucide-react';
 
 interface Message {
   role: 'user' | 'bot';
@@ -26,13 +26,13 @@ const getResponse = (msg: string): string => {
   if (lower.includes('first') || lower.includes('beginner')) return smartResponses.first;
   if (lower.includes('german') || lower.includes('jdm') || lower.includes('bmw')) return smartResponses.german;
   if (lower.includes('budget') || lower.includes('lakh') || lower.includes('price')) return smartResponses.budget;
-  return '🤖 Thanks for your interest! I can help you find the perfect vehicle. Try asking about:\n• Best hybrid cars\n• SUV recommendations\n• Budget-based suggestions\n\nOr call us directly for personalized assistance!';
+  return '🤖 Thanks for your interest! I can help you find the perfect vehicle. Try asking about:\n• Best hybrid cars\n• SUV recommendations\n• Budget-based suggestions\n\nOr call us at +880 1608-095085 for personalized assistance!';
 };
 
 const SmartCarFinder = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', content: '👋 Welcome to Torque Tactix AI! I can help you find your dream car. What are you looking for?' },
+    { role: 'bot', content: '👋 Welcome to Torque Tactix! I can help you find your dream car. What are you looking for?' },
   ]);
   const [input, setInput] = useState('');
 
@@ -48,16 +48,19 @@ const SmartCarFinder = () => {
     <>
       {/* FAB */}
       <motion.button
-        className="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-accent glow-box-accent"
+        className="fixed bottom-6 right-6 z-50 p-4 rounded-full swoosh-click"
+        style={{
+          background: 'linear-gradient(135deg, hsl(43 74% 49%), hsl(30 60% 42%))',
+          boxShadow: '0 0 30px hsl(43 74% 49% / 0.3)',
+        }}
         onClick={() => setOpen(!open)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        animate={{ boxShadow: open ? '0 0 0px transparent' : '0 0 30px hsl(270 50% 40% / 0.4)' }}
       >
         {open ? (
-          <X className="w-6 h-6 text-accent-foreground" />
+          <X className="w-6 h-6 text-primary-foreground" />
         ) : (
-          <Sparkles className="w-6 h-6 text-accent-foreground" />
+          <Sparkles className="w-6 h-6 text-primary-foreground" />
         )}
       </motion.button>
 
@@ -71,7 +74,7 @@ const SmartCarFinder = () => {
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
         >
           {/* Header */}
-          <div className="p-4 border-b border-border/30 flex items-center gap-3">
+          <div className="p-4 border-b flex items-center gap-3" style={{ borderColor: 'hsl(43 74% 49% / 0.1)' }}>
             <Bot className="w-5 h-5 text-primary" />
             <div>
               <h4 className="font-display font-bold text-sm">Smart Car Finder</h4>
@@ -85,9 +88,14 @@ const SmartCarFinder = () => {
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-3 rounded-xl text-sm whitespace-pre-wrap ${
                   msg.role === 'user'
-                    ? 'bg-primary/20 border border-primary/30 text-foreground'
-                    : 'bg-muted/30 border border-border/30 text-foreground'
-                }`}>
+                    ? 'text-foreground'
+                    : 'text-foreground'
+                }`} style={{
+                  background: msg.role === 'user'
+                    ? 'linear-gradient(135deg, hsl(43 74% 49% / 0.15), hsl(43 74% 49% / 0.05))'
+                    : 'hsl(0 0% 100% / 0.05)',
+                  border: `1px solid ${msg.role === 'user' ? 'hsl(43 74% 49% / 0.2)' : 'hsl(0 0% 100% / 0.08)'}`,
+                }}>
                   {msg.content}
                 </div>
               </div>
@@ -101,7 +109,7 @@ const SmartCarFinder = () => {
                 <button
                   key={q.label}
                   onClick={() => send(q.value)}
-                  className="px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-xs text-accent-foreground hover:bg-accent/20 transition-colors"
+                  className="glass-button swoosh-click px-3 py-1.5 rounded-full text-xs"
                 >
                   {q.label}
                 </button>
@@ -110,17 +118,21 @@ const SmartCarFinder = () => {
           )}
 
           {/* Input */}
-          <div className="p-3 border-t border-border/30 flex gap-2">
+          <div className="p-3 flex gap-2" style={{ borderTop: '1px solid hsl(43 74% 49% / 0.1)' }}>
             <input
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && send(input)}
               placeholder="Ask about any vehicle..."
-              className="flex-1 px-4 py-2 rounded-lg bg-muted/20 border border-border/30 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-primary/50 outline-none transition-colors"
+              className="flex-1 px-4 py-2 rounded-lg text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors"
+              style={{
+                background: 'hsl(0 0% 100% / 0.05)',
+                border: '1px solid hsl(43 74% 49% / 0.1)',
+              }}
             />
             <button
               onClick={() => send(input)}
-              className="p-2 rounded-lg bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-colors"
+              className="glass-button-primary p-2 rounded-lg swoosh-click"
             >
               <Send className="w-4 h-4" />
             </button>

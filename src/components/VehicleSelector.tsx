@@ -34,10 +34,10 @@ const VehicleSelector = ({ condition, category, onConditionChange, onCategoryCha
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-3">
-            <span className="text-gradient-primary">THE FUTURE</span> OF THE DHAKA DRIVE
+            <span className="text-gradient-primary">The Showroom</span>
           </h2>
-          <p className="text-muted-foreground font-mono text-sm tracking-wider">
-            SELECT YOUR VEHICLE CONDITION
+          <p className="text-muted-foreground font-body text-sm tracking-wide">
+            Select your vehicle condition
           </p>
         </motion.div>
 
@@ -53,10 +53,10 @@ const VehicleSelector = ({ condition, category, onConditionChange, onCategoryCha
             <button
               key={c.value}
               onClick={() => onConditionChange(condition === c.value ? 'all' : c.value)}
-              className={`relative p-5 rounded-xl border transition-all duration-500 group ${
+              className={`glass-button swoosh-click p-5 text-center ${
                 condition === c.value
-                  ? 'bg-primary/10 border-primary/50 glow-box-primary'
-                  : 'bg-card/40 border-border/30 hover:border-primary/30 hover:bg-card/60'
+                  ? 'glass-button-primary glow-box-primary'
+                  : ''
               }`}
             >
               <span className={`block font-display text-lg md:text-xl font-bold tracking-wider ${
@@ -64,7 +64,7 @@ const VehicleSelector = ({ condition, category, onConditionChange, onCategoryCha
               }`}>
                 {c.label}
               </span>
-              <span className="block text-xs text-muted-foreground mt-1 font-mono">
+              <span className="block text-xs text-muted-foreground mt-1">
                 {c.desc}
               </span>
             </button>
@@ -83,10 +83,10 @@ const VehicleSelector = ({ condition, category, onConditionChange, onCategoryCha
             <button
               key={c.value}
               onClick={() => onCategoryChange(c.value)}
-              className={`px-6 py-2.5 rounded-full font-mono text-xs tracking-widest border transition-all duration-300 ${
+              className={`glass-button swoosh-click px-6 py-2.5 rounded-full text-xs tracking-[0.15em] ${
                 category === c.value
-                  ? 'bg-accent/20 border-accent/50 text-accent-foreground'
-                  : 'bg-card/30 border-border/30 text-muted-foreground hover:border-accent/30'
+                  ? 'glass-button-primary'
+                  : ''
               }`}
             >
               {c.label}
