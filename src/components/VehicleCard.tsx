@@ -10,7 +10,7 @@ interface VehicleCardProps {
 const VehicleCard = ({ car, index }: VehicleCardProps) => {
   return (
     <motion.div
-      className="car-card-shine glass-panel group cursor-pointer"
+      className="car-card-shine glass-panel group cursor-pointer swoosh-click"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -23,15 +23,22 @@ const VehicleCard = ({ car, index }: VehicleCardProps) => {
           src={car.image}
           alt={car.name}
           className="w-full h-48 md:h-56 object-cover"
-          whileHover={{ scale: 1.05, rotateY: 5 }}
+          whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6 }}
-          style={{ perspective: 1000 }}
           loading="lazy"
         />
-        <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-primary/90 font-mono text-xs font-bold text-primary-foreground">
+        <div className="absolute top-3 right-3 px-3 py-1 rounded-full font-mono text-xs font-bold" style={{
+          background: 'linear-gradient(135deg, hsl(43 74% 49% / 0.9), hsl(30 60% 42% / 0.9))',
+          color: 'hsl(0 0% 3%)',
+        }}>
           {car.grade}
         </div>
-        <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-accent/80 font-mono text-xs text-accent-foreground capitalize">
+        <div className="absolute top-3 left-3 px-3 py-1 rounded-full font-body text-xs capitalize" style={{
+          background: 'hsl(0 0% 0% / 0.6)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid hsl(43 74% 49% / 0.15)',
+          color: 'hsl(40 20% 90%)',
+        }}>
           {car.condition}
         </div>
       </div>
@@ -61,7 +68,7 @@ const VehicleCard = ({ car, index }: VehicleCardProps) => {
         </div>
 
         <motion.button
-          className="w-full mt-5 py-3 rounded-xl bg-primary/10 border border-primary/30 font-mono text-xs tracking-widest text-primary hover:bg-primary/20 transition-all"
+          className="w-full mt-5 glass-button-primary py-3 rounded-xl font-body text-xs tracking-[0.15em] swoosh-click"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
