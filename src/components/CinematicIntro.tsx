@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { introCarPool } from '@/data/cars';
 import logo from '@/assets/torque-tactix-logo.png';
