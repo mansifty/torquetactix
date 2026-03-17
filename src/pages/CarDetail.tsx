@@ -11,11 +11,20 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import EMICalculator from '@/components/EMICalculator';
 
-const interiorImages = [
-  'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
-  'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80',
-  'https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80',
-  'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80',
+import dashboardImg from '@/assets/interiors/dashboard.jpg';
+import rearSeatsImg from '@/assets/interiors/rear-seats.jpg';
+import steeringImg from '@/assets/interiors/steering.jpg';
+import consoleImg from '@/assets/interiors/console.jpg';
+import trunkImg from '@/assets/interiors/trunk.jpg';
+import engineImg from '@/assets/interiors/engine.jpg';
+
+const interiorGallery = [
+  { src: dashboardImg, label: 'Dashboard & Cockpit' },
+  { src: rearSeatsImg, label: 'Rear Seats' },
+  { src: steeringImg, label: 'Steering Wheel' },
+  { src: consoleImg, label: 'Center Console' },
+  { src: trunkImg, label: 'Trunk Space' },
+  { src: engineImg, label: 'Engine Bay' },
 ];
 
 const customizationOptions = [
