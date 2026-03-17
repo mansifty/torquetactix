@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Fuel, Gauge, Calendar, Award } from 'lucide-react';
 import type { Car } from '@/data/cars';
@@ -8,9 +9,12 @@ interface VehicleCardProps {
 }
 
 const VehicleCard = ({ car, index }: VehicleCardProps) => {
+  const navigate = useNavigate();
+
   return (
     <motion.div
       className="car-card-shine glass-panel group cursor-pointer swoosh-click"
+      onClick={() => navigate(`/car/${car.id}`)}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -71,6 +75,7 @@ const VehicleCard = ({ car, index }: VehicleCardProps) => {
           className="w-full mt-5 glass-button-primary py-3 rounded-xl font-body text-xs tracking-[0.15em] swoosh-click"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          onClick={(e) => { e.stopPropagation(); navigate(`/car/${car.id}`); }}
         >
           VIEW DETAILS
         </motion.button>
