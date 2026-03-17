@@ -9,9 +9,12 @@ interface VehicleCardProps {
 }
 
 const VehicleCard = ({ car, index }: VehicleCardProps) => {
+  const navigate = useNavigate();
+
   return (
     <motion.div
       className="car-card-shine glass-panel group cursor-pointer swoosh-click"
+      onClick={() => navigate(`/car/${car.id}`)}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
