@@ -75,6 +75,7 @@ const VehicleCard = ({ car, index }: VehicleCardProps) => {
           className="w-full mt-5 glass-button-primary py-3 rounded-xl font-body text-xs tracking-[0.15em] swoosh-click"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          onClick={(e) => { e.stopPropagation(); navigate(`/car/${car.id}`); }}
         >
           VIEW DETAILS
         </motion.button>
