@@ -11,20 +11,11 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import EMICalculator from '@/components/EMICalculator';
 
-import dashboardImg from '@/assets/interiors/dashboard.jpg';
-import rearSeatsImg from '@/assets/interiors/rear-seats.jpg';
-import steeringImg from '@/assets/interiors/steering.jpg';
-import consoleImg from '@/assets/interiors/console.jpg';
-import trunkImg from '@/assets/interiors/trunk.jpg';
-import engineImg from '@/assets/interiors/engine.jpg';
-
-const interiorGallery = [
-  { src: dashboardImg, label: 'Dashboard & Cockpit' },
-  { src: rearSeatsImg, label: 'Rear Seats' },
-  { src: steeringImg, label: 'Steering Wheel' },
-  { src: consoleImg, label: 'Center Console' },
-  { src: trunkImg, label: 'Trunk Space' },
-  { src: engineImg, label: 'Engine Bay' },
+const interiorImages = [
+  'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+  'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80',
+  'https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80',
+  'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80',
 ];
 
 const customizationOptions = [
@@ -264,8 +255,8 @@ const CarDetail = () => {
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={galleryIdx}
-                    src={interiorGallery[galleryIdx].src}
-                    alt={interiorGallery[galleryIdx].label}
+                    src={interiorImages[galleryIdx]}
+                    alt={`Interior view ${galleryIdx + 1}`}
                     className="w-full h-full object-cover"
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -273,40 +264,29 @@ const CarDetail = () => {
                     transition={{ duration: 0.5 }}
                   />
                 </AnimatePresence>
-                {/* Label overlay */}
-                <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg font-body text-xs tracking-wide"
-                  style={{ background: 'hsl(0 0% 0% / 0.6)', backdropFilter: 'blur(10px)', border: '1px solid hsl(43 74% 49% / 0.15)', color: 'hsl(40 20% 90%)' }}>
-                  {interiorGallery[galleryIdx].label}
-                </div>
                 <button
-                  onClick={() => setGalleryIdx(i => (i - 1 + interiorGallery.length) % interiorGallery.length)}
+                  onClick={() => setGalleryIdx(i => (i - 1 + interiorImages.length) % interiorImages.length)}
                   className="absolute left-3 top-1/2 -translate-y-1/2 glass-button p-2 swoosh-click"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={() => setGalleryIdx(i => (i + 1) % interiorGallery.length)}
+                  onClick={() => setGalleryIdx(i => (i + 1) % interiorImages.length)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 glass-button p-2 swoosh-click"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
               <div className="flex gap-2 overflow-x-auto pb-1">
-                {interiorGallery.map((item, i) => (
+                {interiorImages.map((img, i) => (
                   <button
                     key={i}
                     onClick={() => setGalleryIdx(i)}
-                    className={`flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all duration-300 swoosh-click ${
+                    className={`flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-all duration-300 swoosh-click ${
                       i === galleryIdx ? 'border-primary/60 ring-1 ring-primary/30' : 'border-transparent opacity-50 hover:opacity-80'
                     }`}
                   >
-                    <div className="w-24 h-16 relative">
-                      <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
-                      <span className="absolute bottom-0 inset-x-0 text-[8px] font-body text-center py-0.5"
-                        style={{ background: 'hsl(0 0% 0% / 0.7)', color: 'hsl(40 20% 80%)' }}>
-                        {item.label}
-                      </span>
-                    </div>
+                    <img src={img} alt="" className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
