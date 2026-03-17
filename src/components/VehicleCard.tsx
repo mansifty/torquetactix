@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Fuel, Gauge, Calendar, Award } from 'lucide-react';
 import type { Car } from '@/data/cars';
